@@ -4,6 +4,9 @@ branch = True
 [paths]
 source =
     pycaprio/
+omit =
+    env/
+    tests/
 
 [report]
 fail_under = 90
