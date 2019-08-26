@@ -10,7 +10,7 @@ workflows:
           name: Python 3.7 unit tests
           version: "3.7"
       - static_analysis:
-          name: Lax static analysis
+          name: Static analysis
 jobs:
 
   unit_tests:
@@ -31,7 +31,7 @@ jobs:
           name: Run tests
           command: |
             make tests
-  lax_static_analysis:
+  static_analysis:
     docker:
       - image: circleci/python:3.6
     steps:
