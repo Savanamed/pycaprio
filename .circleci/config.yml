@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  codecov: codecov/codecov@1.0.5
+
 workflows:
   branch_tests:
     jobs:
@@ -52,6 +55,7 @@ jobs:
           name: Coverage
           command: |
             . env/bin/activate
-            poetry run coverage run --source=pycaprio --branch -m pytest
-            coverage report --fail-under=90
-            codecov
+            poetry run pytest --cov=pycaprio --cov-branch --cov-fail-under=90 tests/unit_tests
+      - codecov/upload:
+          flags: unittest
+
