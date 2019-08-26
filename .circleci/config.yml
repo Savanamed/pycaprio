@@ -70,12 +70,10 @@ jobs:
       - run:
           name: Linter
           command: |
-            . env/bin/activate
             make lint
       - run:
           name: Coverage
           command: |
-            . env/bin/activate
             poetry run pytest --cov=pycaprio --cov-branch --cov-fail-under=90 --cov-report=xml --cov-report=html tests/unit_tests
       - codecov/upload:
           flags: unittest
