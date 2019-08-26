@@ -25,27 +25,48 @@ jobs:
       - image: circleci/python:<< parameters.version >>
     steps:
       - checkout
+
+      - restore_cache:
+          keys:
+            - deps-{{ checksum "poetry.lock" }}
+
       - run:
           name: Install dependencies
           command: |
             pip install poetry
             make dependencies
+
+      - save_cache:
+          key: deps-{{ checksum "poetry.lock" }}
+          paths:
+            - /home/circleci/.cache/pypoetry/virtualenvs
+
       - run:
           name: Run tests
           command: |
             make tests
+
   static_analysis:
     docker:
       - image: circleci/python:3.6
     steps:
       - checkout
+
+      - restore_cache:
+          keys:
+            - deps-{{ checksum "poetry.lock" }}
+
       - run:
           name: Install dependencies
           command: |
-            python3 -m venv env
-            . env/bin/activate
             pip install poetry
             make dependencies
+
+      - save_cache:
+          key: deps-{{ checksum "poetry.lock" }}
+          paths:
+            - /home/circleci/.cache/pypoetry/virtualenvs
+
       - run:
           name: Linter
           command: |
