@@ -1,0 +1,9 @@
+[run]
+branch = True
+
+[paths]
+source =
+    pycaprio/
+
+[report]
+fail_under = 90
