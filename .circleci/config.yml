@@ -53,5 +53,5 @@ jobs:
           command: |
             . env/bin/activate
             poetry run coverage run -m pytest
-            coverage report --fail-under=90
+            coverage report --fail-under=90 --source=pycaprio --branch
             codecov
