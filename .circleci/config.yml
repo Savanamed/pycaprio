@@ -1,0 +1,57 @@
+version: 2.1
+
+workflows:
+  branch_tests:
+    jobs:
+      - unit_tests:
+          name: Python 3.6 unit tests
+          version: "3.6"
+      - unit_tests:
+          name: Python 3.7 unit tests
+          version: "3.7"
+      - static_analysis:
+          name: Lax static analysis
+jobs:
+
+  unit_tests:
+    parameters:
+      version:
+        type: string
+        default: latest
+    docker:
+      - image: circleci/python:<< parameters.version >>
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            pip install poetry
+            make dependencies
+      - run:
+          name: Run tests
+          command: |
+            make tests
+  lax_static_analysis:
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            python3 -m venv env
+            . env/bin/activate
+            pip install poetry
+            make dependencies
+      - run:
+          name: Linter
+          command: |
+            . env/bin/activate
+            make lint
+      - run:
+          name: Coverage
+          command: |
+            . env/bin/activate
+            poetry run coverage run -m pytest
+            coverage report --fail-under=90
+            codecov
