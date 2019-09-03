@@ -4,8 +4,13 @@ NO_DOCUMENT = -1
 
 
 class DocumentFormats:
-    DEFAULT = 'text'
+    DEFAULT = 'webanno'
+    WEBANNO = 'webanno'
+    NIF = 'nif'
+    CONLLU = 'conllu'
     TEXT = 'text'
+    JSON = 'json'
+    XMI = 'xmi'
 
 
 class DocumentStatus:
