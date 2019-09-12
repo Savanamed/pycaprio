@@ -26,8 +26,8 @@ print(project) # <Project #1: Project name>
 ```
 
 ### Create project
-Creates a project in INCEpTION. It needs the project's name and optionally the creator's username.
-If no `creator_name` is provided, pycaprio will use the one that is currently logged into the API.
+Creates a project in INCEpTION. It requires the project's name and optionally the creator's username.
+If no `creator_name` is provided, pycaprio will use the one of the user that is currently logged in to the API.
 
 Example:
 
@@ -46,8 +46,8 @@ client.api.delete_project(3)
 ```
 
 ### Export project
-Exports a project into a zip. Pycaprio returns the zip's content in bytes to allow flexibility of use/store.
-You can specify the format of the export using the `format` parameter. By default, it uses the `webanno` format. 
+Exports a project into a zip. Pycaprio returns the zip's content in bytes to allow flexibility in use/storage.
+You can specify the export file format using the `format` parameter. By default, it uses the `webanno` format. 
 
 Example:
 

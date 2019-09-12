@@ -1,6 +1,6 @@
 ## The Document object
 
-Pycaprio uses the `Document` object to model INCEpTION's documents, and has these properties:
+Pycaprio uses the `Document` object to model INCEpTION's documents, and has the following properties:
 
 * `project_id`: Id of the project in which the document is located.
 * `document_id`: Id of the document
@@ -31,7 +31,7 @@ with open("downloaded_document", 'wb') as document_file:
 ```
 
 ### Upload document
-Uploads a document to a project in INCEpTION. It needs the Id of the project, the name of the document and the content of it (io stream).
+Uploads a document to a project in INCEpTION. It requires the Id of the project, the name of the document and the content of it (io stream).
 You can specify the document's format via `document_format` (defaults to `webanno`).
 You can specify the document's state via `document_state` (defaults to `NEW`).
  

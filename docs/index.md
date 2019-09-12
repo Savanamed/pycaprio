@@ -1,6 +1,6 @@
 # Pycaprio
 
-Python client to the [INCEpTION](https://github.com/inception-project/inception) annotation tool.
+Python client for the [INCEpTION](https://github.com/inception-project/inception) annotation tool.
 
 At the moment, it serves as an API wrapper, supporting the AERO format INCEpTION serves.
 

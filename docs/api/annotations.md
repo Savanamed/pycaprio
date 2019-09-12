@@ -1,6 +1,6 @@
 ## The Document object
 
-Pycaprio uses the `Annotation` object to model INCEpTION's documents, and has these properties:
+Pycaprio uses the `Annotation` object to model INCEpTION's documents, and has the following properties:
 
 * `project_id`: Id of the project in which the annotated document is located.
 * `document_id`: Id of the annotated document.
@@ -33,9 +33,8 @@ with open("downloaded_annotation", 'wb') as annotation_file:
 ```
 
 ### Upload annotation
-Uploads an annotation to a document in INCEpTION. It needs the Id of the project, the Id of the document, the annotator's username and the content of it (io stream).
-You can specify the annotation's format via `annotation_format` (defaults to `webanno`).
-You can specify the annotation's state via `annotation_state` (defaults to `NEW`).
+Uploads an annotation to a document in INCEpTION. It requires the Id of the project, the Id of the document, the annotator's username and the annotation's content (io stream).
+You can specify the annotation's format via `annotation_format` (defaults to `webanno`) and its state via `annotation_state` (defaults to `NEW`).
  
 Example:
 

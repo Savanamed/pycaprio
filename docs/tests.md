@@ -4,7 +4,7 @@ You can run the tests with: `make tests`
 
 ### Quality Assurance
 
-Quality checks in place:
+The following quality checks are in place:
 
 * 90% branch coverage
 * `pycaprio` passes flake8
@@ -13,7 +13,7 @@ Quality checks in place:
 Current coverage is [![codecov](https://codecov.io/gh/Savanamed/Pycaprio/branch/master/graph/badge.svg)](https://codecov.io/gh/Savanamed/Pycaprio)
 
 ### Warning
-Integration tests are being develop to test INCEpTION's API and will be integrated into pycaprio when considered ready, 
+Integration tests are being developed to test INCEpTION's API and will be integrated into pycaprio when considered ready, 
 at the moment there are only unit tests.
 
 

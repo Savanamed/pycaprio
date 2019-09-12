@@ -1,6 +1,6 @@
 # List of formats
 
-Documents, annotations and exports can be downloaded/created with different formats.
+Documents, annotations and exports can be downloaded/created in different formats.
 
 INCEpTION doesn't specify in their documentation which formats are supported, but the following have been found and included in `pycaprio`:
 
