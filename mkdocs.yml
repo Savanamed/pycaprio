@@ -5,4 +5,6 @@ nav:
     - Api:
           - Quickstart: 'api/quickstart.md'
           - Projects: 'api/projects.md'
+          - Documents: 'api/documents.md'
+          - Annotations: 'api/annotations.md'
 theme: readthedocs

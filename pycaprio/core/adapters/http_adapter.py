@@ -41,7 +41,7 @@ class HttpInceptionAdapter(BaseInceptionAdapter):
             document.project_id = project_id
         return document_list
 
-    def document(self, project_id: int, document_id: int) -> bytes:
+    def document(self, project_id: int, document_id: int, format: str = DocumentFormats.DEFAULT) -> bytes:
         response = self.client.get(f'/projects/{project_id}/documents/{document_id}', allowed_statuses=(200,))
         return response.content
 
