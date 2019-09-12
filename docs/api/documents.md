@@ -18,11 +18,13 @@ print(documents) # [<Document #4: Doc name (Project: 1)>, <Document #5: Doc name
 
 ### Download document
 Downloads a document's content.
+You can specify the annotation's format via `document_format` (defaults to `webanno`).
 
 Example: 
 
 ```python
-document_content = client.api.document(1, 4) # Downloads document 4 from project 1
+from pycaprio.core.mappings import DocumentFormats
+document_content = client.api.document(1, 4, document_format=DocumentFormats.WEBANNO) # Downloads document 4 from project 1
 
 with open("downloaded_document", 'wb') as document_file:
     document_file.write(document_content)
@@ -31,14 +33,14 @@ with open("downloaded_document", 'wb') as document_file:
 ### Upload document
 Uploads a document to a project in INCEpTION. It needs the Id of the project, the name of the document and the content of it (io stream).
 You can specify the document's format via `document_format` (defaults to `webanno`).
-You can specify the document's state via `state` (defaults to `NEW`).
+You can specify the document's state via `document_state` (defaults to `NEW`).
  
 Example:
 
 ```python
 from pycaprio.core.mappings import DocumentFormats, DocumentStatus
 with open("document") as document_file:
-    new_document = client.api.create_document(1, "Test document name", document_file, document_format=DocumentFormats.WEBANNO, state=DocumentStatus.IN_PROGRESS)
+    new_document = client.api.create_document(1, "Test document name", document_file, document_format=DocumentFormats.WEBANNO, document_state=DocumentStatus.IN_PROGRESS)
 print(new_document) # <Document #5: Test document name (Project: 1)>
 ```
 

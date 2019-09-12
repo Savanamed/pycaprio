@@ -20,35 +20,37 @@ print(annotations) # [<Annotation by test-user (Project: 1, Document: 4)>, <Anno
 
 ### Download annotation
 Downloads a document's annotation content.
+You can specify the annotation's format via `annotation_format` (defaults to `webanno`).
 
 Example: 
 
 ```python
-annotation_content = client.api.annotation(1, 4, 'test-user') # Downloads test-user's annotations on document 4 on project 1
+from pycaprio.core.mappings import DocumentFormats
+annotation_content = client.api.annotation(1, 4, 'test-user', annotation_format=DocumentFormats.WEBANNO) # Downloads test-user's annotations on document 4 on project 1
 
 with open("downloaded_annotation", 'wb') as annotation_file:
     annotation_file.write(annotation_content)
 ```
 
-### Upload document
-Uploads a document to a project in INCEpTION. It needs the Id of the project, the name of the document and the content of it (io stream).
-You can specify the document's format via `document_format` (defaults to `webanno`).
-You can specify the document's state via `state` (defaults to `NEW`).
+### Upload annotation
+Uploads an annotation to a document in INCEpTION. It needs the Id of the project, the Id of the document, the annotator's username and the content of it (io stream).
+You can specify the annotation's format via `annotation_format` (defaults to `webanno`).
+You can specify the annotation's state via `annotation_state` (defaults to `NEW`).
  
 Example:
 
 ```python
-from pycaprio.core.mappings import DocumentFormats, DocumentStatus
-with open("document") as document_file:
-    new_document = client.api.create_document(1, "Test document name", document_file, document_format=DocumentFormats.WEBANNO, state=DocumentStatus.IN_PROGRESS)
-print(new_document) # <Document #5: Test document name (Project: 1)>
+from pycaprio.core.mappings import DocumentFormats, AnnotationStatus
+with open("annotation") as annotation_file:
+    new_annotation = client.api.create_annotation(1, 4, 'leonardo-dicaprio', annotation_format=DocumentFormats.WEBANNO, annotation_state=AnnotationStatus.ANNOTATION_IN_PROGRESS)
+print(new_annotation) # <Annotation by leonardo-dicaprio (Project: 1, Document: 4)>
 ```
 
-### Delete document
+### Delete annotation
 Deletes a document from a project.
 
 Example:
 
 ```python
-client.api.delete_document(1, 4) # Deletes document #4 from project #1
+client.api.delete_annotation(1, 4, 'leonardo-dicaprio') # Deletes annotation made by leonardo-dicaprio on document #4 from project #1
 ```

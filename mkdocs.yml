@@ -7,4 +7,6 @@ nav:
           - Projects: 'api/projects.md'
           - Documents: 'api/documents.md'
           - Annotations: 'api/annotations.md'
+    - Tests: 'tests.md'
+    - License: 'license.md'
 theme: readthedocs
