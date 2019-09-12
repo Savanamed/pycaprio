@@ -1,0 +1,8 @@
+site_name: Pycaprio
+site_description: Python client to the INCEpTION annotation tool.
+nav:
+    - Home: 'index.md'
+    - Api:
+          - Quickstart: 'api/quickstart.md'
+          - Projects: 'api/projects.md'
+theme: readthedocs

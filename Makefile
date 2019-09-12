@@ -1,3 +1,5 @@
+.PHONY: docs
+
 dependencies:
 	poetry install
 
@@ -16,3 +18,6 @@ build: unit-tests lint
 
 publish: build
 	poetry publish
+
+docs:
+	mkdocs serve
