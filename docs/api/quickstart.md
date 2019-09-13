@@ -7,9 +7,9 @@ the `ROLE_REMOTE` role assigned. You can find more information on how to achieve
 The `pycaprio` client requires the inception host and the username and password of the remote user you want to use.
 
 
-You can specify this information either by using environmental variables or by explicitly passing the values to the client as arguments:
+You can specify this information either by using environment variables or by explicitly passing the values to the client as arguments:
 
-### Environmental variables (preferred way)
+### Environment variables (preferred way)
 ```
 export INCEPTION_HOST=http://your-inception-host.com
 export INCEPTION_USERNAME=remote-user

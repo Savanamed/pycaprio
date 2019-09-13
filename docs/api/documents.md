@@ -2,10 +2,10 @@
 
 Pycaprio uses the `Document` object to model INCEpTION's documents, and has the following properties:
 
-* `project_id`: Id of the project in which the document is located.
-* `document_id`: Id of the document
-* `document_name`: Name of the document
-* `document_state`: State in which the document is in
+* `project_id`: Id of the project in which the document is located (integer).
+* `document_id`: Id of the document (integer).
+* `document_name`: Name of the document (string).
+* `document_state`: State in which the document is in (string, possible values in `pycaprio.core.mappings.DocumentStatus`).
 
 ### List documents
 Lists all the documents in a project that are in INCEpTION.

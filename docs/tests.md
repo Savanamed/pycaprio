@@ -1,6 +1,9 @@
 # Running the tests
 
-You can run the tests with: `make tests`
+To be able to run the tests you must execute from your already cloned repo's root:
+```
+make tests
+```
 
 ### Quality Assurance
 

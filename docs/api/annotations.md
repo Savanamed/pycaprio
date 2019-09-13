@@ -1,11 +1,11 @@
-## The Document object
+## The Annotation object
 
 Pycaprio uses the `Annotation` object to model INCEpTION's documents, and has the following properties:
 
-* `project_id`: Id of the project in which the annotated document is located.
-* `document_id`: Id of the annotated document.
-* `user_name`: Annotator's username.
-* `annotation_state`: State in which the annotation is in.
+* `project_id`: Id of the project in which the annotated document is located (integer).
+* `document_id`: Id of the annotated document (integer).
+* `user_name`: Annotator's username (string).
+* `annotation_state`: State in which the annotation is in (string, possible values in `pycaprio.core.mappings.AnnotationStatus`).
 * `timestamp`: Annotation's creation date.
 
 
