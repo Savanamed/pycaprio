@@ -24,8 +24,7 @@ pycaprio_client = Pycaprio("http://inception-host.com", ('username', 'password')
 pycaprio_client.api.create_project("Project name", "creator-username")
 ```
 
-And so on.
-Although Pycaprio's API is simple and usable, proper documentation will roll in a few days.
+Check the [documentation](https://pycaprio.readthedocs.io) if you want to know more.
 
 ## License
 Pycaprio is under the MIT license. Check it out [here](https://opensource.org/licenses/MIT)
