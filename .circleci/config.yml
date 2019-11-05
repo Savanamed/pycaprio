@@ -108,41 +108,40 @@ jobs:
     docker:
       - image: circleci/python:3.6
 
-      steps:
-        - checkout
+    steps:
+      - checkout
 
-        - restore_cache:
-            keys:
-              - deps-{{ checksum "poetry.lock" }}
-        - run:
-            name: Install dependencies
-            command: |
-              pip install poetry
-              make dependencies
+      - restore_cache:
+          keys:
+            - deps-{{ checksum "poetry.lock" }}
+      - run:
+          name: Install dependencies
+          command: |
+            pip install poetry
+            make dependencies
 
-        - save_cache:
-            key: deps-{{ checksum "poetry.lock" }}
-            paths:
-              - /home/circleci/.cache/pypoetry/virtualenvs
-        - run:
-            name: Publishing to PyPi
-            command: |
-              make ci-publish
+      - save_cache:
+          key: deps-{{ checksum "poetry.lock" }}
+          paths:
+            - /home/circleci/.cache/pypoetry/virtualenvs
+      - run:
+          name: Publishing to PyPi
+          command: |
+            make ci-publish
 
-        - add_ssh_keys:
-            fingerprints:
-              - "c6:8c:e6:80:bc:30:74:4e:6b:6e:11:a3:03:ce:4a:d5"
-        - run:
-            name: Configure git credentials
-            command: |
-              git config user.email "ci@circleci.com"
-              git config user.name "CI bot"
-        - run:
-            name: Bump version
-            command: |
-              git checkout -b "release-${CIRCLE_TAG}"
-              make ci-bump-version
-              git checkout master
-              git merge "release-${CIRCLE_TAG}"
-              git push
-
+      - add_ssh_keys:
+          fingerprints:
+            - "c6:8c:e6:80:bc:30:74:4e:6b:6e:11:a3:03:ce:4a:d5"
+      - run:
+          name: Configure git credentials
+          command: |
+            git config user.email "ci@circleci.com"
+            git config user.name "CI bot"
+      - run:
+          name: Bump version
+          command: |
+            git checkout -b "release-${CIRCLE_TAG}"
+            make ci-bump-version
+            git checkout master
+            git merge "release-${CIRCLE_TAG}"
+            git push
