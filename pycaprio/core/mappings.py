@@ -23,6 +23,7 @@ class AnnotationState:
     IN_PROGRESS = 'IN-PROGRESS'
     COMPLETE = 'COMPLETE'
 
+
 class DocumentState:
     DEFAULT = 'NEW'
     NEW = 'NEW'
