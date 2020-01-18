@@ -4,10 +4,11 @@ from unittest.mock import Mock
 import pytest
 
 from pycaprio.core.adapters.http_adapter import HttpInceptionAdapter
-from pycaprio.core.objects import Project, Document
+from pycaprio.core.objects import Project, Document, Annotation
 
 test_project = Project(1, "")
 test_document = Document(test_project.project_id, 1, "", "")
+test_annotation = Annotation(test_project.project_id, test_document.document_id, "test_user", "", None)
 
 
 @pytest.mark.parametrize('route, verb, function, parameters', [
@@ -202,3 +203,14 @@ def test_annotation_has_document_id_injected_creation(mock_http_adapter: HttpInc
     mock_http_adapter.client.post.return_value = mock_http_response
     response = mock_http_adapter.create_annotation(test_project_id, test_document_id, "test-name", None)
     assert response.document_id == test_document_id
+
+
+@pytest.mark.parametrize("value, expected_value", [
+    (1, 1),
+    (test_project, test_project.project_id),
+    (test_document, test_document.document_id),
+    (test_annotation, test_annotation.user_name),
+    (Exception, Exception)
+])
+def test_get_object_id_value_ok(mock_http_adapter, value, expected_value):
+    assert mock_http_adapter._get_object_id(value) == expected_value
