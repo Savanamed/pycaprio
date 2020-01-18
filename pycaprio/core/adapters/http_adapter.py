@@ -30,7 +30,8 @@ class HttpInceptionAdapter(BaseInceptionAdapter):
         response = self.client.get('/projects', allowed_statuses=(200,))
         return ProjectSchema().load(response.json()['body'], many=True)
 
-    def project(self, project_id: int) -> Project:
+    def project(self, project: Union[Project, int]) -> Project:
+        project_id = self._get_object_id(project)
         response = self.client.get(f'/projects/{project_id}')
         return ProjectSchema().load(response.json()['body'], many=False)
 
@@ -134,8 +135,6 @@ class HttpInceptionAdapter(BaseInceptionAdapter):
 
     @staticmethod
     def _get_object_id(o: Union[int, Project, Document, Annotation]) -> int:
-        if isinstance(o, int):
-            return o
         object_id_mappings = {
             Project: lambda p: p.project_id,
             Document: lambda d: d.document_id,
