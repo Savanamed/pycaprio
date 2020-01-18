@@ -23,7 +23,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
         pass  # pragma: no cover
 
     @abstractmethod
-    def project(self, project: Union[Project,int]) -> Project:
+    def project(self, project: Union[Project, int]) -> Project:
         """
         Retrieves a Project
         :param project: Project/Project id
