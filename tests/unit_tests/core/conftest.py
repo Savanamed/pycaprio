@@ -11,10 +11,11 @@ from pycaprio.core.mappings import NO_PROJECT
 from pycaprio.core.objects.annotation import Annotation
 from pycaprio.core.objects.document import Document
 from pycaprio.core.objects.project import Project
+from pycaprio.core.objects.curation import Curation
 from pycaprio.core.schemas.annotation import AnnotationSchema
 from pycaprio.core.schemas.document import DocumentSchema
 from pycaprio.core.schemas.project import ProjectSchema
-
+from pycaprio.core.schemas.curation import CurationSchema
 
 # Fixtures for project
 
