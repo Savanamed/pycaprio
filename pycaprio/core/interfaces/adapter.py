@@ -179,3 +179,14 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
         :return: Recently created Document.
         """
         pass  # pragma: no cover
+
+    @abstractmethod
+    def curation(self, project: Union[Project, int], document: Union[Document, int],
+                       annotation_format: str = InceptionFormat.DEFAULT) -> bytes:
+        """
+        Exports curated documents of a Project as a zip file
+        :param project: Project/Project id.
+        :param project_format: Format in which the documents and annotations will be exported.
+        :return: Zip file in bytes.
+        """
+        pass  # pragma: no cover
