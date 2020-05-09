@@ -148,6 +148,20 @@ class HttpInceptionAdapter(BaseInceptionAdapter):
                                    allowed_statuses=(200,), params={'format': annotation_format})
         return response.content
 
+    def create_curation(self, project: Union[Project, int], document: Union[Document, int],
+                        content: IO,
+                        document_state: str = DocumentState.DEFAULT,
+                        annotation_format: str = InceptionFormat.DEFAULT) -> Annotation:
+        project_id = self._get_object_id(project)
+        document_id = self._get_object_id(document)
+        response = self.client.post(f"/projects/{project_id}/documents/{document_id}/curation",
+                                    form_data={'format': annotation_format, 'state': document_state},
+                                    files={"content": (content)})
+        curation = CurationSchema().load(response.json()['body'], many=False)
+        curation.project_id = project_id
+        curation.document_id = document_id
+        return curation
+
     @staticmethod
     def _get_object_id(o: Union[int, Project, Document, Annotation]) -> int:
         object_id_mappings = {
