@@ -12,6 +12,7 @@ from pycaprio.core.objects.document import Document
 from pycaprio.core.objects.project import Project
 from pycaprio.core.objects.curation import Curation
 
+
 class BaseInceptionAdapter(metaclass=ABCMeta):
 
     @abstractmethod
@@ -166,9 +167,9 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
 
     @abstractmethod
     def create_curation(self, project: Union[Project, int], document: Union[Document, int],
-                       content: IO,
-                       annotation_format: str = InceptionFormat.DEFAULT,
-                       document_state: str = DocumentState.DEFAULT) -> Curation:
+                        content: IO,
+                        annotation_format: str = InceptionFormat.DEFAULT,
+                        document_state: str = DocumentState.DEFAULT) -> Curation:
         """
         Creates a curated Document
         :param project: Project/Id of the Project where the new Document will be created
@@ -182,11 +183,20 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
 
     @abstractmethod
     def curation(self, project: Union[Project, int], document: Union[Document, int],
-                       annotation_format: str = InceptionFormat.DEFAULT) -> bytes:
+                 annotation_format: str = InceptionFormat.DEFAULT) -> bytes:
         """
         Exports curated documents of a Project as a zip file
         :param project: Project/Project id.
         :param project_format: Format in which the documents and annotations will be exported.
         :return: Zip file in bytes.
+        """
+        pass  # pragma: no cover
+
+    @abstractmethod
+    def delete_curation(self, project: Union[Project, int], document: Union[Document, int]) -> bool:
+        """
+        Deletes curated annotations for a document in a Project
+        :param project_format:
+        :param project: Project/Project id.
         """
         pass  # pragma: no cover
