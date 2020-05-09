@@ -133,6 +133,12 @@ class HttpInceptionAdapter(BaseInceptionAdapter):
                                     allowed_statuses=(201, 200))
         return ProjectSchema().load(response.json()['body'], many=False)
 
+    def curations(self, project: Union[Project, int], document_state: str = InceptionFormat.DEFAULT) -> List[Document]:
+        curations_list = self.documents(project)
+        curator_list = [document for document in curations_list if
+                        document.document_state in document_state]
+        return curator_list
+
     @staticmethod
     def _get_object_id(o: Union[int, Project, Document, Annotation]) -> int:
         object_id_mappings = {
