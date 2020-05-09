@@ -28,7 +28,14 @@ test_curation = Curation(test_project.project_id, test_document.document_id, "te
      (test_project, test_document)),
     ('/projects/1/documents/1/annotations/test-username', 'delete', HttpInceptionAdapter.delete_annotation,
      (test_project, test_document, 'test-username')),
-    ('/projects/1/export.zip', 'get', HttpInceptionAdapter.export_project, (test_project,))
+    ('/projects/1/export.zip', 'get', HttpInceptionAdapter.export_project, (test_project,)),
+    ('/projects/1/export.zip', 'get', HttpInceptionAdapter.export_project, (test_project,)),
+    ('/projects/1/documents', 'get', HttpInceptionAdapter.curations, (1,)),
+    ('/projects/1/documents/1/curation', 'get', HttpInceptionAdapter.curation, (1, 1)),
+    ('/projects/1/documents/1/curation', 'delete', HttpInceptionAdapter.delete_curation, (1, 1)),
+    ('/projects/1/documents', 'get', HttpInceptionAdapter.curations, (test_project)),
+    ('/projects/1/documents/1/curation', 'get', HttpInceptionAdapter.curation, (test_project, test_document)),
+    ('/projects/1/documents/1/curation', 'delete', HttpInceptionAdapter.delete_curation, (test_project, test_document))
 ])
 def test_list_resources_gets_good_route(route, verb, function, parameters, mock_http_adapter: HttpInceptionAdapter):
     function(mock_http_adapter, *parameters)
