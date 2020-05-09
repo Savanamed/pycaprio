@@ -16,6 +16,7 @@ from pycaprio.core.schemas.document import DocumentSchema
 from pycaprio.core.schemas.project import ProjectSchema
 from pycaprio.core.schemas.curation import CurationSchema
 
+
 class HttpInceptionAdapter(BaseInceptionAdapter):
     """
     Adapter which connects to the INCEpTION's API.
@@ -138,6 +139,14 @@ class HttpInceptionAdapter(BaseInceptionAdapter):
         curator_list = [document for document in curations_list if
                         document.document_state in document_state]
         return curator_list
+
+    def curation(self, project: Union[Project, int], document: Union[Document, int],
+                 annotation_format: str = InceptionFormat.DEFAULT) -> bytes:
+        project_id = self._get_object_id(project)
+        document_id = self._get_object_id(document)
+        response = self.client.get(f"/projects/{project_id}/documents/{document_id}/curation",
+                                   allowed_statuses=(200,), params={'format': annotation_format})
+        return response.content
 
     @staticmethod
     def _get_object_id(o: Union[int, Project, Document, Annotation]) -> int:
