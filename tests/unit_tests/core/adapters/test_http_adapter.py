@@ -131,7 +131,11 @@ def test_resource_returns_bytes(mock_http_adapter: HttpInceptionAdapter, mock_ht
                            (test_project, "test-name", None,),
                            'document'),
                           ('/projects/1/documents/1/annotations/test-user', HttpInceptionAdapter.create_annotation,
-                           (test_project, test_document, "test-user", None,), 'annotation')
+                           (test_project, test_document, "test-user", None,), 'annotation'),
+                          ('/projects/1/documents/1/curation', HttpInceptionAdapter.create_curation,
+                           (1, 1, None,), 'annotation'),
+                          ('/projects/1/documents/1/curation', HttpInceptionAdapter.create_curation,
+                           (test_project, test_document, None,), 'annotation')
                           ])
 def test_resource_creation_good_route(route: str, function: callable, params: tuple, resource: str,
                                       mock_http_adapter: HttpInceptionAdapter, mock_http_response: Mock,
