@@ -9,7 +9,7 @@ from pycaprio.core.objects import Project, Document, Annotation, Curation
 test_project = Project(1, "")
 test_document = Document(test_project.project_id, 1, "", "")
 test_annotation = Annotation(test_project.project_id, test_document.document_id, "test_user", "", None)
-
+test_curation = Curation(test_project.project_id, test_document.document_id, "test_user", "" ,None)
 
 @pytest.mark.parametrize('route, verb, function, parameters', [
     ('/projects', 'get', HttpInceptionAdapter.projects, ()),
