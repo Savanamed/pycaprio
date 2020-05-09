@@ -109,7 +109,9 @@ def test_get_project_returns_good_instance(mock_http_adapter: HttpInceptionAdapt
 @pytest.mark.parametrize('function, params', [('document', (1, 1)),
                                               ('annotation', (1, 1, 'test-username')),
                                               ('document', (test_project, test_document)),
-                                              ('annotation', (test_project, test_document, 'test-username'))
+                                              ('annotation', (test_project, test_document, 'test-username')),
+                                              ('curation', (1, 1)),
+                                              ('curation', (test_project, test_document))
                                               ])
 def test_resource_returns_bytes(mock_http_adapter: HttpInceptionAdapter, mock_http_response: Mock, function: str,
                                 params: tuple):
