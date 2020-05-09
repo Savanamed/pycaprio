@@ -14,7 +14,7 @@ from pycaprio.core.objects.project import Project
 from pycaprio.core.schemas.annotation import AnnotationSchema
 from pycaprio.core.schemas.document import DocumentSchema
 from pycaprio.core.schemas.project import ProjectSchema
-
+from pycaprio.core.schemas.curation import CurationSchema
 
 class HttpInceptionAdapter(BaseInceptionAdapter):
     """
