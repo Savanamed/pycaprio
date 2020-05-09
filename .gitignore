@@ -45,3 +45,6 @@ coverage.xml
 
 # poetry lock
 poetry.lock
+
+# notebook
+notebooks
