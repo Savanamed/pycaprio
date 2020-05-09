@@ -4,7 +4,7 @@ from unittest.mock import Mock
 import pytest
 
 from pycaprio.core.adapters.http_adapter import HttpInceptionAdapter
-from pycaprio.core.objects import Project, Document, Annotation
+from pycaprio.core.objects import Project, Document, Annotation, Curation
 
 test_project = Project(1, "")
 test_document = Document(test_project.project_id, 1, "", "")
