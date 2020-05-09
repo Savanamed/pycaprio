@@ -21,6 +21,7 @@ def document_schema():
 def annotation_schema():
     return AnnotationSchema()
 
+
 @pytest.fixture
 def curation_schema():
     return CurationSchema()
