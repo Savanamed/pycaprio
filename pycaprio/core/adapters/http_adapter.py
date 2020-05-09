@@ -162,6 +162,13 @@ class HttpInceptionAdapter(BaseInceptionAdapter):
         curation.document_id = document_id
         return curation
 
+    def delete_curation(self, project: Union[Project, int], document: Union[Document, int]) -> bool:
+        project_id = self._get_object_id(project)
+        document_id = self._get_object_id(document)
+        self.client.delete(f'/projects/{project_id}/documents/{document_id}/curation',
+                           allowed_statuses=(204, 200))
+        return True
+
     @staticmethod
     def _get_object_id(o: Union[int, Project, Document, Annotation]) -> int:
         object_id_mappings = {
