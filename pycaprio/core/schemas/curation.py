@@ -26,8 +26,7 @@ class CurationSchema(BaseInceptionSchema):
             datetime_timestamp = datetime.datetime.strptime(serialized_curation['timestamp'], DATE_FORMAT_ISO8601)
 
         return Curation(NO_PROJECT, NO_DOCUMENT, serialized_curation['user'], serialized_curation['state'],
-                    datetime_timestamp)
-
+                        datetime_timestamp)
 
     def dump(self, curation: deserialized_type, many: bool = False):
         if many:
