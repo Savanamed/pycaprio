@@ -12,3 +12,8 @@ def test_curation_schema_dump_one_dict_many_true(curation_schema: CurationSchema
                                                  deserialized_curation: Curation,
                                                  serialized_curation: dict):
     assert curation_schema.dump([deserialized_curation], many=True) == [serialized_curation]
+
+
+def test_curation_schema_dump_list_many_true(curation_schema: CurationSchema,
+                                             deserialized_curation: Curation):
+    assert type(curation_schema.dump([deserialized_curation], many=True)) is list
