@@ -17,6 +17,7 @@ from pycaprio.core.schemas.document import DocumentSchema
 from pycaprio.core.schemas.project import ProjectSchema
 from pycaprio.core.schemas.curation import CurationSchema
 
+
 # Fixtures for project
 
 @pytest.fixture
@@ -127,3 +128,18 @@ def serializations(serialized_project, serialized_annotation, serialized_documen
 @pytest.fixture
 def deserializations(deserialized_project, deserialized_annotation, deserialized_document):
     return {'project': deserialized_project, 'annotation': deserialized_annotation, 'document': deserialized_document}
+
+
+@pytest.fixture
+def curation_schema():
+    return CurationSchema()
+
+
+@pytest.fixture
+def deserialized_curation(mock_project_id: int, mock_document_id: int, mock_document_state: str):
+    return Curation(NO_PROJECT, mock_project_id, mock_document_state)
+
+
+@pytest.fixture
+def serialized_curation(mock_project_id: int, mock_document_id: int, mock_document_state: str):
+    return {'id': mock_project_id, 'state': mock_document_state}
