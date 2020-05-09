@@ -48,7 +48,9 @@ def test_list_resources_gets_good_route(route, verb, function, parameters, mock_
     ('/projects/1/documents/1/annotations', 'get', HttpInceptionAdapter.annotations, (1, 1)),
     ('/projects', 'get', HttpInceptionAdapter.projects, ()),
     ('/projects/1/documents', 'get', HttpInceptionAdapter.documents, (test_project,)),
-    ('/projects/1/documents/1/annotations', 'get', HttpInceptionAdapter.annotations, (test_project, test_document))
+    ('/projects/1/documents/1/annotations', 'get', HttpInceptionAdapter.annotations, (test_project, test_document)),
+    ('/projects/1/documents', 'get', HttpInceptionAdapter.curations, (1,)),
+    ('/projects/1/documents', 'get', HttpInceptionAdapter.curations, (test_project,))
 ])
 def test_list_resources_returns_list(route, verb, function, parameters, mock_http_adapter: HttpInceptionAdapter):
     resource_list = function(mock_http_adapter, *parameters)
