@@ -163,3 +163,19 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
         :return: Project recently created.
         """
         pass  # pragma: no cover
+
+    @abstractmethod
+    def create_curation(self, project: Union[Project, int], document: Union[Document, int],
+                       content: IO,
+                       annotation_format: str = InceptionFormat.DEFAULT,
+                       document_state: str = DocumentState.DEFAULT) -> Curation:
+        """
+        Creates a curated Document
+        :param project: Project/Id of the Project where the new Document will be created
+        :param document: Document/Id of the Document which is targeted for annotation.
+        :param content: Content of the curated document.
+        :param annotation_format: Annotation format.
+        :param document_state: State of the Curator.
+        :return: Recently created Document.
+        """
+        pass  # pragma: no cover
