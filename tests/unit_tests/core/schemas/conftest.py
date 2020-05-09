@@ -3,7 +3,7 @@ import pytest
 from pycaprio.core.schemas.annotation import AnnotationSchema
 from pycaprio.core.schemas.document import DocumentSchema
 from pycaprio.core.schemas.project import ProjectSchema
-from pycaprio.core.schemas.project import CurationSchema
+from pycaprio.core.schemas.curation import CurationSchema
 
 # Fixtures for project
 
