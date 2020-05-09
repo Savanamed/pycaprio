@@ -9,7 +9,8 @@ from pycaprio.core.objects import Project, Document, Annotation, Curation
 test_project = Project(1, "")
 test_document = Document(test_project.project_id, 1, "", "")
 test_annotation = Annotation(test_project.project_id, test_document.document_id, "test_user", "", None)
-test_curation = Curation(test_project.project_id, test_document.document_id, "test_user", "" ,None)
+test_curation = Curation(test_project.project_id, test_document.document_id, "test_user", "", None)
+
 
 @pytest.mark.parametrize('route, verb, function, parameters', [
     ('/projects', 'get', HttpInceptionAdapter.projects, ()),
@@ -82,7 +83,11 @@ def test_import_project_returns_project(mock_http_adapter: HttpInceptionAdapter,
                           ('/projects/1/documents/1', HttpInceptionAdapter.document, (test_project, test_document),
                            'document'),
                           ('/projects/1/documents/1/annotations/test-user', HttpInceptionAdapter.annotation,
-                           (test_project, test_document, 'test-user'), 'annotation')
+                           (test_project, test_document, 'test-user'), 'annotation'),
+                          ('/projects/1/documents/1/curation', HttpInceptionAdapter.curation,
+                           (1, 1), 'annotation'),
+                          ('/projects/1/documents/1/curation', HttpInceptionAdapter.curation,
+                           (test_project, test_document), 'annotation')
                           ])
 def test_get_single_resource_route_ok(route: str, function: callable, params: tuple, resource: dict,
                                       mock_http_adapter: HttpInceptionAdapter, mock_http_response: Mock,
