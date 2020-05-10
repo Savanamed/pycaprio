@@ -43,10 +43,10 @@ WEBANNO example:
 ```python
 # To download all curated documents, in case not all document have been curated (will cause error), you need to select the ones that have a document_state associated with curation:
 from pycaprio.core.mappings import InceptionFormat, DocumentState
-curation = []
+documents = client.api.documents(1)
 for document in documents:
     if document.document_state in DocumentState.CURATION_IN_PROGRESS:
-        curated content = client.api.curation(1, 4, annotation_format=InceptionFormat.WEBANNO)
+        curated content = client.api.curation(1, document, annotation_format=InceptionFormat.WEBANNO)
         with open(document.document_name, 'wb') as annotation_file:
             annotation_file.write(curated_content)
 ```
@@ -57,9 +57,10 @@ XMI example:
 # To download all curated documents, in case not all document have been curated (will cause error), you need to select the ones that have a document_state associated with curation:
 from pycaprio.core.mappings import InceptionFormat, DocumentState
 curations = []
+documents = client.api.documents(1)
 for document in documents:
     if document.document_state in DocumentState.CURATION_IN_PROGRESS:
-        curated content = client.api.curation(1, 4, annotation_format=InceptionFormat.XMI)
+        curated content = client.api.curation(1, document, annotation_format=InceptionFormat.XMI)
         curations.append(curated content)
         for curation in curations:
             z = zipfile.ZipFile(io.BytesIO(curation))
