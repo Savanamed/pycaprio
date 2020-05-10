@@ -152,4 +152,4 @@ def deserialized_curation(mock_project_id: int, mock_document_id: int, mock_cura
 @pytest.fixture
 def serialized_curation(mock_project_id: int, mock_document_id: int, mock_curation_user: str,
                         mock_document_state: str, mock_str_date: str):
-    return {'state': mock_document_state, 'timestamp': mock_str_date, 'user': mock_curation_user}
+    return {'user': mock_curation_user, 'state': mock_document_state, 'timestamp': mock_str_date}
