@@ -27,3 +27,11 @@ def test_curation_schema_dump_list_no_empty_many_true(curation_schema: CurationS
 def test_curation_schema_dump_list_of_dicts_many_true(curation_schema: CurationSchema,
                                                       deserialized_curation: Curation):
     assert type(curation_schema.dump([deserialized_curation], many=True)[0]) is dict
+
+
+def test_curation_schema_load_one_dict_many_false(curation_schema: CurationSchema,
+                                                  deserialized_curation: Curation,
+                                                  serialized_curation: dict):
+    assert curation_schema.load(serialized_curation) == deserialized_curation
+
+
