@@ -3,8 +3,9 @@
 Pycaprio uses the `Curation` object to model INCEpTION's documents, and has the following properties:
 
 * `project_id`: Id of the project in which the curated document is located (integer).
-* `document_id`: Id of the annotated document (integer).
-* `document_state`: Statues of the curated document (string).
+* `document_id`: Id of the curated document (integer).
+* `document_state`: Status of the curated document (string).
+* `timestamp`: Curation's creation date.
 
 ### List curated documents
 Lists all the curated documents in an INCEpTION project.
@@ -14,7 +15,7 @@ You can provide a `Document` instance instead of a `document_id` as well.
 
 Example:
 ```python
-documents = client.api.curations(1, document_state = 'CURATION-COMPLETE') # Finished curations in project #1
+documents = client.api.curations(1,4,  document_state = 'CURATION-COMPLETE') # Finished curations in project #1
 print(documents) # [<Document #4: file.xmi (Project: 1)>]
 ```
 
@@ -55,7 +56,7 @@ XMI example:
 ```python
 # To download all curated documents, in case not all document have been curated (will cause error), you need to select the ones that have a document_state associated with curation:
 from pycaprio.core.mappings import InceptionFormat, DocumentState
-curation = []
+curations = []
 for document in documents:
     if document.document_state in DocumentState.CURATION_IN_PROGRESS:
         curated content = client.api.curation(1, 4, annotation_format=InceptionFormat.XMI)
