@@ -35,3 +35,7 @@ def test_curation_schema_load_one_dict_many_false(curation_schema: CurationSchem
     assert curation_schema.load(serialized_curation) == deserialized_curation
 
 
+def test_curation_schema_load_one_dict_many_true(curation_schema: CurationSchema,
+                                                 deserialized_curation: Curation,
+                                                 serialized_curation: dict):
+    assert curation_schema.load([serialized_curation], many=True) == [deserialized_curation]
