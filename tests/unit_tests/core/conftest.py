@@ -122,7 +122,8 @@ def mock_io():
 
 @pytest.fixture
 def serializations(serialized_project, serialized_annotation, serialized_document):
-    return {'project': serialized_project, 'annotation': serialized_annotation, 'document': serialized_document}
+    return {'project': serialized_project, 'annotation': serialized_annotation, 'document': serialized_document,
+            'curation': serialized_curation}
 
 
 @pytest.fixture
@@ -149,5 +150,5 @@ def deserialized_curation(mock_project_id: int, mock_document_id: int, mock_cura
 
 @pytest.fixture
 def serialized_curation(mock_project_id: int, mock_document_id: int, mock_curation_user: str,
-                          mock_document_state: str, mock_str_date: str):
-    return {'state': mock_document_state, 'timestamp': mock_str_date, 'user': mock_curation_user }
+                        mock_document_state: str, mock_str_date: str):
+    return {'state': mock_document_state, 'timestamp': mock_str_date, 'user': mock_curation_user}
