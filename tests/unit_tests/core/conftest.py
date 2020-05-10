@@ -127,8 +127,9 @@ def serializations(serialized_project, serialized_annotation, serialized_documen
 
 
 @pytest.fixture
-def deserializations(deserialized_project, deserialized_annotation, deserialized_document):
-    return {'project': deserialized_project, 'annotation': deserialized_annotation, 'document': deserialized_document}
+def deserializations(deserialized_project, deserialized_annotation, deserialized_document, deserialized_curation):
+    return {'project': deserialized_project, 'annotation': deserialized_annotation, 'document': deserialized_document,
+            'curation': deserialized_curation}
 
 
 @pytest.fixture
