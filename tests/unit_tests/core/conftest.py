@@ -136,10 +136,18 @@ def curation_schema():
 
 
 @pytest.fixture
-def deserialized_curation(mock_project_id: int, mock_document_id: int, mock_document_state: str):
-    return Curation(NO_PROJECT, mock_project_id, mock_document_state)
+def mock_curation_user():
+    return "test-user"
 
 
 @pytest.fixture
-def serialized_curation(mock_project_id: int, mock_document_id: int, mock_document_state: str):
-    return {'id': mock_project_id, 'state': mock_document_state}
+def deserialized_curation(mock_project_id: int, mock_document_id: int, mock_curation_user: str,
+                          mock_document_state: str, mock_datetime_date: datetime.datetime):
+    return Curation(NO_PROJECT, NO_DOCUMENT, mock_curation_user, mock_document_state,
+                    mock_datetime_date)
+
+
+@pytest.fixture
+def serialized_curation(mock_project_id: int, mock_document_id: int, mock_curation_user: str,
+                          mock_document_state: str, mock_str_date: str):
+    return {'state': mock_document_state, 'timestamp': mock_str_date, 'user': mock_curation_user }
