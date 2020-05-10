@@ -121,7 +121,7 @@ def mock_io():
 
 
 @pytest.fixture
-def serializations(serialized_project, serialized_annotation, serialized_document):
+def serializations(serialized_project, serialized_annotation, serialized_document, serialized_curation):
     return {'project': serialized_project, 'annotation': serialized_annotation, 'document': serialized_document,
             'curation': serialized_curation}
 
