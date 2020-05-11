@@ -11,6 +11,7 @@ from pycaprio.core.mappings import DocumentState
 from pycaprio.core.objects.annotation import Annotation
 from pycaprio.core.objects.document import Document
 from pycaprio.core.objects.project import Project
+from pycaprio.core.objects.curation import Curation
 from pycaprio.core.schemas.annotation import AnnotationSchema
 from pycaprio.core.schemas.document import DocumentSchema
 from pycaprio.core.schemas.project import ProjectSchema
@@ -151,7 +152,7 @@ class HttpInceptionAdapter(BaseInceptionAdapter):
     def create_curation(self, project: Union[Project, int], document: Union[Document, int],
                         content: IO,
                         document_state: str = DocumentState.DEFAULT,
-                        curation_format: str = InceptionFormat.DEFAULT) -> Annotation:
+                        curation_format: str = InceptionFormat.DEFAULT) -> Curation:
         project_id = self._get_object_id(project)
         document_id = self._get_object_id(document)
         response = self.client.post(f"/projects/{project_id}/documents/{document_id}/curation",
