@@ -197,6 +197,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
                  curation_format: str = InceptionFormat.DEFAULT) -> bytes:
         """
         Exports curated document of a Project as bytes format
+        :param document: Document/Id of the Document in Curation.
         :param curation_format: Curation format.
         :param project: Project/Project id.
         :param project_format: Format in which the documents and annotations will be exported.
