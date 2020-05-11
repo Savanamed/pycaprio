@@ -198,10 +198,10 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
     def curation(self, project: Union[Project, int], document: Union[Document, int],
                  curation_format: str = InceptionFormat.DEFAULT) -> bytes:
         """
-        Exports curated documents of a Project as a zip file
+        Exports curated document of a Project as bytes format
         :param project: Project/Project id.
         :param project_format: Format in which the documents and annotations will be exported.
-        :return: Zip file in bytes.
+        :return: bytes
         """
         pass  # pragma: no cover
 
