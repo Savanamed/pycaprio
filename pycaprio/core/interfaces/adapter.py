@@ -141,6 +141,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
     def delete_annotation(self, project: Union[Project, int], document: Union[Document, int], user_name: str) -> bool:
         """
         Deletes an Annotation from a Document in a Project
+        :param user_name: Annotator's username.
         :param project: Project/Project id.
         :param document: Document/Document id.
         """
