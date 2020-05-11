@@ -176,7 +176,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
         :param project: Project/Id of the Project where the new Document will be created
         :param document: Document/Id of the Document which is targeted for annotation.
         :param content: Content of the curated document.
-        :param curation_format: Annotation format.
+        :param curation_format: Curation format.
         :param document_state: State of the Document.
         :return: Recently created Document.
         """
@@ -197,6 +197,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
                  curation_format: str = InceptionFormat.DEFAULT) -> bytes:
         """
         Exports curated document of a Project as bytes format
+        :param curation_format: Curation format.
         :param project: Project/Project id.
         :param project_format: Format in which the documents and annotations will be exported.
         :return: bytes
