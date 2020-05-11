@@ -141,11 +141,11 @@ class HttpInceptionAdapter(BaseInceptionAdapter):
         return curator_list
 
     def curation(self, project: Union[Project, int], document: Union[Document, int],
-                 annotation_format: str = InceptionFormat.DEFAULT) -> bytes:
+                 curation_format: str = InceptionFormat.DEFAULT) -> bytes:
         project_id = self._get_object_id(project)
         document_id = self._get_object_id(document)
         response = self.client.get(f"/projects/{project_id}/documents/{document_id}/curation",
-                                   allowed_statuses=(200,), params={'format': annotation_format})
+                                   allowed_statuses=(200,), params={'format': curation_format})
         return response.content
 
     def create_curation(self, project: Union[Project, int], document: Union[Document, int],
