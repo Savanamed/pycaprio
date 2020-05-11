@@ -8,7 +8,7 @@ Pycaprio uses the `Curation` object to model INCEpTION's documents, and has the 
 * `timestamp`: Curation's creation date.
 
 ### List curated documents
-Lists all the curated documents in an INCEpTION project.
+Lists the curated documents in an INCEpTION project having one of the two `document_state`.
 
 You can provide a `Project` instance instead of a `project_id` as well.
 You can provide a `Document` instance instead of a `document_id` as well.
