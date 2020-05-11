@@ -45,7 +45,7 @@ WEBANNO example:
 from pycaprio.core.mappings import InceptionFormat, DocumentState
 documents = client.api.documents(1)
 for document in documents:
-    if document.document_state in DocumentState.CURATION_IN_PROGRESS:
+    if document.document_state == DocumentState.CURATION_IN_PROGRESS:
         curated content = client.api.curation(1, document, annotation_format=InceptionFormat.WEBANNO)
         with open(document.document_name, 'wb') as annotation_file:
             annotation_file.write(curated_content)
