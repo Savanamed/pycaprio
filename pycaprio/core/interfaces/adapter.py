@@ -168,7 +168,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
     @abstractmethod
     def create_curation(self, project: Union[Project, int], document: Union[Document, int],
                         content: IO,
-                        annotation_format: str = InceptionFormat.DEFAULT,
+                        curation_format: str = InceptionFormat.DEFAULT,
                         document_state: str = DocumentState.DEFAULT) -> Curation:
         """
         Creates a curated Document
@@ -196,7 +196,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
 
     @abstractmethod
     def curation(self, project: Union[Project, int], document: Union[Document, int],
-                 annotation_format: str = InceptionFormat.DEFAULT) -> bytes:
+                 curation_format: str = InceptionFormat.DEFAULT) -> bytes:
         """
         Exports curated documents of a Project as a zip file
         :param project: Project/Project id.
