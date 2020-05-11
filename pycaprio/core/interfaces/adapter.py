@@ -174,7 +174,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
         """
         Creates a curated Document
         :param project: Project/Id of the Project where the new Document will be created
-        :param document: Document/Id of the Document which is targeted for annotation.
+        :param document: Document/Id of the Document in Curation.
         :param content: Content of the curated document.
         :param curation_format: Curation format.
         :param document_state: State of the Document.
@@ -200,7 +200,6 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
         :param document: Document/Id of the Document in Curation.
         :param curation_format: Curation format.
         :param project: Project/Project id.
-        :param project_format: Format in which the documents and annotations will be exported.
         :return: bytes
         """
         pass  # pragma: no cover
@@ -209,7 +208,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
     def delete_curation(self, project: Union[Project, int], document: Union[Document, int]) -> bool:
         """
         Deletes curated annotations for a document in a Project
-        :param project_format:
+        :param document: Document/Id of the Document in Curation.
         :param project: Project/Project id.
         """
         pass  # pragma: no cover
