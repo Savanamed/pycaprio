@@ -189,10 +189,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
         :param document_state: State of the Document.
         :return: List
         """
-        curations_list = self.documents(project)
-        curator_list = [document for document in curations_list if
-                        document.document_state in document_state]
-        return curator_list
+        pass  # pragma: no cover
 
     @abstractmethod
     def curation(self, project: Union[Project, int], document: Union[Document, int],
