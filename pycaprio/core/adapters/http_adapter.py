@@ -151,11 +151,11 @@ class HttpInceptionAdapter(BaseInceptionAdapter):
     def create_curation(self, project: Union[Project, int], document: Union[Document, int],
                         content: IO,
                         document_state: str = DocumentState.DEFAULT,
-                        annotation_format: str = InceptionFormat.DEFAULT) -> Annotation:
+                        curation_format: str = InceptionFormat.DEFAULT) -> Annotation:
         project_id = self._get_object_id(project)
         document_id = self._get_object_id(document)
         response = self.client.post(f"/projects/{project_id}/documents/{document_id}/curation",
-                                    form_data={'format': annotation_format, 'state': document_state},
+                                    form_data={'format': curation_format, 'state': document_state},
                                     files={"content": (content)})
         curation = CurationSchema().load(response.json()['body'], many=False)
         curation.project_id = project_id
