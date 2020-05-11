@@ -226,8 +226,9 @@ def test_annotation_has_document_id_injected_creation(mock_http_adapter: HttpInc
     response = mock_http_adapter.create_annotation(test_project_id, test_document_id, "test-name", None)
     assert response.document_id == test_document_id
 
+
 def test_curation_has_project_id_injected_creation(mock_http_adapter: HttpInceptionAdapter,
-                                                     mock_http_response: Mock, serialized_curation: dict):
+                                                   mock_http_response: Mock, serialized_curation: dict):
     test_project_id = 1
     test_document_id = 2
     mock_http_response.json.return_value = {'body': serialized_curation}
@@ -235,14 +236,16 @@ def test_curation_has_project_id_injected_creation(mock_http_adapter: HttpIncept
     response = mock_http_adapter.create_curation(test_project_id, test_document_id, "test-state", "test-format")
     assert response.project_id == test_project_id
 
+
 def test_curation_has_document_id_injected_creation(mock_http_adapter: HttpInceptionAdapter,
-                                                     mock_http_response: Mock, serialized_curation: dict):
+                                                    mock_http_response: Mock, serialized_curation: dict):
     test_project_id = 1
     test_document_id = 2
     mock_http_response.json.return_value = {'body': serialized_curation}
     mock_http_adapter.client.post.return_value = mock_http_response
     response = mock_http_adapter.create_curation(test_project_id, test_document_id, "test-state", "test-format")
     assert response.document_id == test_document_id
+
 
 @pytest.mark.parametrize("value, expected_value", [
     (1, 1),
