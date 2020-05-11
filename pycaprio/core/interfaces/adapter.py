@@ -176,7 +176,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
         :param document: Document/Id of the Document which is targeted for annotation.
         :param content: Content of the curated document.
         :param annotation_format: Annotation format.
-        :param document_state: State of the Curator.
+        :param document_state: State of the Document.
         :return: Recently created Document.
         """
         pass  # pragma: no cover
