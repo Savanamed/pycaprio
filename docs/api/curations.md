@@ -4,7 +4,7 @@ Pycaprio uses the `Curation` object to model INCEpTION's documents, and has the 
 
 * `project_id`: Id of the project in which the curated document is located (integer).
 * `document_id`: Id of the curated document (integer).
-* `document_state`: Status of the curated document (string).
+* `document_state`: State in which the document is in (string, possible values in `pycaprio.core.mappings.DocumentStatus`).
 * `timestamp`: Curation's creation date.
 
 ### List curated documents
