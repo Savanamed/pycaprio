@@ -85,9 +85,9 @@ def test_import_project_returns_project(mock_http_adapter: HttpInceptionAdapter,
                           ('/projects/1/documents/1/annotations/test-user', HttpInceptionAdapter.annotation,
                            (test_project, test_document, 'test-user'), 'annotation'),
                           ('/projects/1/documents/1/curation', HttpInceptionAdapter.curation,
-                           (1, 1), 'annotation'),
+                           (1, 1), 'curation'),
                           ('/projects/1/documents/1/curation', HttpInceptionAdapter.curation,
-                           (test_project, test_document), 'annotation')
+                           (test_project, test_document), 'curation')
                           ])
 def test_get_single_resource_route_ok(route: str, function: callable, params: tuple, resource: dict,
                                       mock_http_adapter: HttpInceptionAdapter, mock_http_response: Mock,
