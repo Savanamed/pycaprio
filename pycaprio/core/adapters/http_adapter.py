@@ -157,7 +157,7 @@ class HttpInceptionAdapter(BaseInceptionAdapter):
         document_id = self._get_object_id(document)
         response = self.client.post(f"/projects/{project_id}/documents/{document_id}/curation",
                                     form_data={'format': curation_format, 'state': document_state},
-                                    files={"content": (content)})
+                                    files={"content": content})
         curation = CurationSchema().load(response.json()['body'], many=False)
         curation.project_id = project_id
         curation.document_id = document_id
