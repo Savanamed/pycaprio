@@ -193,6 +193,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
         curator_list = [document for document in curations_list if
                         document.document_state in document_state]
         return curator_list
+
     @abstractmethod
     def curation(self, project: Union[Project, int], document: Union[Document, int],
                  annotation_format: str = InceptionFormat.DEFAULT) -> bytes:
