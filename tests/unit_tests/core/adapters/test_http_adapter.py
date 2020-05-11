@@ -34,7 +34,7 @@ test_curation = Curation(test_project.project_id, test_document.document_id, "te
     ('/projects/1/documents', 'get', HttpInceptionAdapter.curations, (1,)),
     ('/projects/1/documents/1/curation', 'get', HttpInceptionAdapter.curation, (1, 1)),
     ('/projects/1/documents/1/curation', 'delete', HttpInceptionAdapter.delete_curation, (1, 1)),
-    ('/projects/1/documents', 'get', HttpInceptionAdapter.curations, (test_project)),
+    ('/projects/1/documents', 'get', HttpInceptionAdapter.curations, (test_project,)),
     ('/projects/1/documents/1/curation', 'get', HttpInceptionAdapter.curation, (test_project, test_document)),
     ('/projects/1/documents/1/curation', 'delete', HttpInceptionAdapter.delete_curation, (test_project, test_document))
 ])
@@ -158,7 +158,7 @@ def test_resource_creation_good_route(route: str, function: callable, params: tu
                           ('/projects/1/documents/1/annotations/test-user', HttpInceptionAdapter.create_annotation,
                            (test_project, test_document, "test-user", None,), 'annotation'),
                           ('/projects/1/documents/1/curation', HttpInceptionAdapter.create_curation,
-                           (test_project, test_document, "document_state", "curation_format"),'curation')
+                           (test_project, test_document, "document_state", "curation_format"), 'curation')
                           ])
 def test_resource_creation_returns_resource_instance(route: str, function: callable, params: tuple, resource: str,
                                                      mock_http_adapter: HttpInceptionAdapter, mock_http_response: Mock,
