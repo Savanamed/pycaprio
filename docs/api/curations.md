@@ -59,7 +59,7 @@ from pycaprio.core.mappings import InceptionFormat, DocumentState
 curations = []
 documents = client.api.documents(1)
 for document in documents:
-    if document.document_state in DocumentState.CURATION_IN_PROGRESS:
+    if document.document_state == DocumentState.CURATION_IN_PROGRESS:
         curated content = client.api.curation(1, document, annotation_format=InceptionFormat.XMI)
         curations.append(curated content)
         for curation in curations:
