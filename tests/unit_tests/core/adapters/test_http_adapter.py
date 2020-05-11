@@ -158,7 +158,7 @@ def test_resource_creation_good_route(route: str, function: callable, params: tu
                           ('/projects/1/documents/1/annotations/test-user', HttpInceptionAdapter.create_annotation,
                            (test_project, test_document, "test-user", None,), 'annotation'),
                           ('/projects/1/documents/1/curation', HttpInceptionAdapter.create_curation,
-                           (test_project, test_document, "document_state", "curation_format"),),
+                           (test_project, test_document, "document_state", "curation_format"),'curation')
                           ])
 def test_resource_creation_returns_resource_instance(route: str, function: callable, params: tuple, resource: str,
                                                      mock_http_adapter: HttpInceptionAdapter, mock_http_response: Mock,
