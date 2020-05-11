@@ -168,8 +168,8 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
     @abstractmethod
     def create_curation(self, project: Union[Project, int], document: Union[Document, int],
                         content: IO,
-                        curation_format: str = InceptionFormat.DEFAULT,
-                        document_state: str = DocumentState.DEFAULT) -> Curation:
+                        document_state: str = DocumentState.DEFAULT,
+                        curation_format: str = InceptionFormat.DEFAULT) -> Curation:
         """
         Creates a curated Document
         :param project: Project/Id of the Project where the new Document will be created
