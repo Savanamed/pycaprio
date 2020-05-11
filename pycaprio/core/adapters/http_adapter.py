@@ -138,7 +138,7 @@ class HttpInceptionAdapter(BaseInceptionAdapter):
     def curations(self, project: Union[Project, int], document_state: str = InceptionFormat.DEFAULT) -> List[Document]:
         curations_list = self.documents(project)
         curator_list = [document for document in curations_list if
-                        document.document_state in document_state]
+                        document.document_state == document_state]
         return curator_list
 
     def curation(self, project: Union[Project, int], document: Union[Document, int],
