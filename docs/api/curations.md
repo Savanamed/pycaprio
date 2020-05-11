@@ -22,7 +22,7 @@ print(documents) # [<Document #4: file.xmi (Project: 1)>]
 ### Download curated annotations
 Downloads a curated document's annotation content.
 
-You can specify the annotation's format via `annotation_format` (defaults to `webanno`).
+You can specify the curation's format via `curation_format` (defaults to `webanno`).
 
 You can provide a `Project` instance instead of a `project_id` as well.
 You can provide a `Document` instance instead of a `document_id` as well.
@@ -32,7 +32,7 @@ Example:
 ```python
 from pycaprio.mappings import InceptionFormat
 # In case you want a specific curated document
-curated annotation_content = client.api.curation(1, 4, annotation_format=InceptionFormat.WEBANNO) # Downloads test-user's annotations from document 4 of project 1
+curated annotation_content = client.api.curation(1, 4, curation_format=InceptionFormat.WEBANNO) # Downloads test-user's annotations from document 4 of project 1
 with open("downloaded_annotation", 'wb') as annotation_file:
     annotation_file.write(annotation_content)
 
@@ -46,7 +46,7 @@ from pycaprio.core.mappings import InceptionFormat, DocumentState
 documents = client.api.documents(1)
 for document in documents:
     if document.document_state == DocumentState.CURATION_IN_PROGRESS:
-        curated content = client.api.curation(1, document, annotation_format=InceptionFormat.WEBANNO)
+        curated content = client.api.curation(1, document, curation_format=InceptionFormat.WEBANNO)
         with open(document.document_name, 'wb') as annotation_file:
             annotation_file.write(curated_content)
 ```
@@ -60,7 +60,7 @@ curations = []
 documents = client.api.documents(1)
 for document in documents:
     if document.document_state == DocumentState.CURATION_IN_PROGRESS:
-        curated content = client.api.curation(1, document, annotation_format=InceptionFormat.XMI)
+        curated content = client.api.curation(1, document, curation_format=InceptionFormat.XMI)
         curations.append(curated content)
         for curation in curations:
             z = zipfile.ZipFile(io.BytesIO(curation))
@@ -71,7 +71,7 @@ for document in documents:
 ### Upload curation
 Uploads a curated document in INCEpTION. It requires the Id of the project, the Id of the document, the annotator's username and the annotation's content (io stream).
 
-You can specify the annotation's format via `annotation_format` (defaults to `webanno`) and its state via `annotation_state` (defaults to `NEW`).
+You can specify the curation's format via `curation_format` (defaults to `webanno`) and its state via `annotation_state` (defaults to `NEW`).
 
 You can specify the document's state via `document_state`.
 You can provide a `Project` instance instead of a `project_id` as well.
@@ -84,21 +84,21 @@ To curate a document outside of INCEpTION or to simply change the status of a do
  ```python
 from pycaprio.mappings import InceptionFormat
 # Get the annotations or a specific document as e.g. binary CAS
-file = client.api.annotation(1, 4, 'test-user', annotation_format=InceptionFormat.BIN)
+file = client.api.annotation(1, 4, 'test-user', curation_format=InceptionFormat.BIN)
 # The below function then uploads the file with the new status
-client.api.create_curation(1, 4, annotation_format = InceptionFormat.BIN, content =  annotations, document_state = DocumentState.CURATION_IN_PROGRESS)
+client.api.create_curation(1, 4, curation_format = InceptionFormat.BIN, content =  annotations, document_state = DocumentState.CURATION_IN_PROGRESS)
 ```
 
 XMI format also works, but one has to unzip the file first and import only the plain XMI file
  ```python
 from pycaprio.mappings import InceptionFormat
-annotation_content = client.api.annotation(1, 4, 'test-user', annotation_format=InceptionFormat.XMI)
+annotation_content = client.api.annotation(1, 4, 'test-user', curation_format=InceptionFormat.XMI)
 z = zipfile.ZipFile(io.BytesIO(annotations))
 z.extractall('/path/to/folder')
 with open('/path/to/folder/file.xmi', 'rb') as f:
     file = f.read()
 # The below function then uploads the file with the new status
-client.api.create_curation(1, 4, annotation_format = InceptionFormat.XMI, content =  file, document_state = DocumentState.CURATION_IN_PROGRESS)
+client.api.create_curation(1, 4, curation_format = InceptionFormat.XMI, content =  file, document_state = DocumentState.CURATION_IN_PROGRESS)
 ```
 
 ### Delete curations
