@@ -17,7 +17,7 @@ class Curation:
         return isinstance(other, Curation) and \
                other.project_id == self.project_id and \
                other.document_id == self.document_id and \
-               other.user_name == self.document_id and \
+               other.user_name == self.user_name and \
                other.document_state == self.document_state and \
                other.timestamp == self.timestamp
 
