@@ -176,7 +176,7 @@ class BaseInceptionAdapter(metaclass=ABCMeta):
         :param project: Project/Id of the Project where the new Document will be created
         :param document: Document/Id of the Document which is targeted for annotation.
         :param content: Content of the curated document.
-        :param annotation_format: Annotation format.
+        :param curation_format: Annotation format.
         :param document_state: State of the Document.
         :return: Recently created Document.
         """
