@@ -5,6 +5,7 @@ from pycaprio.core.schemas.document import DocumentSchema
 from pycaprio.core.schemas.project import ProjectSchema
 from pycaprio.core.schemas.curation import CurationSchema
 
+
 # Fixtures for project
 
 @pytest.fixture
