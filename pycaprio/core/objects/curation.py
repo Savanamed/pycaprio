@@ -1,5 +1,6 @@
 import datetime
 
+
 class Curation:
     """
     INCEpTION's Curation object
