@@ -15,7 +15,7 @@ You can provide a `Document` instance instead of a `document_id` as well.
 
 Example:
 ```python
-documents = client.api.curations(1,4,  document_state = DocumentState.CURATION_IN_PROGRESS) # Finished curations in project #1
+documents = client.api.curations(1,  document_state = DocumentState.CURATION_IN_PROGRESS) # Finished curations in project #1
 print(documents) # [<Document #4: file.xmi (Project: 1)>]
 ```
 
